@@ -1,1 +1,1 @@
-# inteligencia-artificial
+# Respositorio con las prácticas de IA
