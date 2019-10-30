@@ -5,3 +5,7 @@ P01 - Lógica Computacional.pdf: contiene la memoria de la práctica
 bowling.pl: código fuente del proyecto
 
 test.pl: tests que verifican el funcionamiento del código
+
+# Práctica de búsqueda heurística sin adversarios
+
+Main.java: contiene la clase Main() del proyecto
