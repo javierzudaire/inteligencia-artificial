@@ -8,4 +8,8 @@ test.pl: tests que verifican el funcionamiento del código
 
 # Práctica de búsqueda heurística sin adversarios
 
-Main.java: contiene la clase Main() del proyecto
+P02 - Búsqueda heurísca.pdf: respuestas al cuestionario
+
+Búsqueda Heurística: código del proyecto entero. Main() se encuentra en /src/principal/Main.java
+
+
