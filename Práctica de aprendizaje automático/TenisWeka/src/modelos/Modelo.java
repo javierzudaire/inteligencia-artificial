@@ -30,20 +30,19 @@ public class Modelo {
 
     public void aprenderModelo() {
         try {
-            // create Random Forest
-            //Classifier cls = new J48();
+            // Create Random Forest
             Classifier cls = new RandomForest();
 
             // train
             Instances inst = new Instances(
                     new BufferedReader(
-                            new FileReader("./training_data/iris.arff")));
+                            new FileReader("./training_data/atp_matches_2018.arff")));
             inst.setClassIndex(inst.numAttributes() - 1);
             cls.buildClassifier(inst);
 
             // serialize model
             ObjectOutputStream oos = new ObjectOutputStream(
-                    new FileOutputStream("./models/objetoJ48Iris.model"));
+                    new FileOutputStream("./models/objetoRandomForest.model"));
             oos.writeObject(cls);
             oos.flush();
             oos.close();
@@ -56,14 +55,13 @@ public class Modelo {
 
     }
 
-    //5.8,2.7,3.9,1.2,?
     public String aplicarModelo() {
         try {
-            String[] valoresAtributos = {"Iris-setosa", "Iris-versicolor", "Iris-virginica"};
-            Classifier clasificador = (Classifier) weka.core.SerializationHelper.read("./models/objetoJ48Iris.model");
-            ConverterUtils.DataSource source = new ConverterUtils.DataSource("./test_data/test.arff");
+            String[] valoresAtributos = {"Player1", "Player2"};
+            Classifier clasificador = (Classifier) weka.core.SerializationHelper.read("./models/objeto2RandomForest.model");
+            ConverterUtils.DataSource source = new ConverterUtils.DataSource("./test_data/test_tennis.arff");
             Instances data = source.getDataSet();
-            data.setClassIndex(4);
+            data.setClassIndex(1);
             return valoresAtributos[(int) clasificador.classifyInstance(data.instance(0))];
         } catch (Exception ex) {
             Logger.getLogger(Modelo.class.getName()).log(Level.SEVERE, null, ex);
@@ -73,25 +71,45 @@ public class Modelo {
 
     public void introducirDatos() throws IOException {
 
+        //Clay,?,R,FRA,24.75,R,CRO,30.15,10,15,7,15,32,7
         Scanner scan = new Scanner(System.in);
         System.out.println("-- CLASSIFIER RANDOM FOREST --");
         System.out.println("");
-        System.out.print("Introduce sepallenght: ");
-        String sepallenght = scan.next();
-        System.out.print("Introduce sepalwidth: ");
-        String sepalwidth = scan.next();
-        System.out.print("Introduce petallength: ");
-        String petallength = scan.next();
-        System.out.print("Introduce petalwidth: ");
-        String petalwidth = scan.next();
+        System.out.print("Introduce surface (Hard,Clay,Grass): ");
+        String surface = scan.next();
+        System.out.print("Introduce player1_hand (R,L,U): ");
+        String winner_hand = scan.next();
+        System.out.print("Introduce player1_ioc (country): ");
+        String winner_ioc = scan.next();
+        System.out.print("Introduce player1_age: ");
+        String winner_age = scan.next();
+        System.out.print("Introduce player2_hand (R,L,U): ");
+        String loser_hand = scan.next();
+        System.out.print("Introduce player2_ioc (country): ");
+        String loser_ioc = scan.next();
+        System.out.print("Introduce player2_age: ");
+        String loser_age = scan.next();
+        System.out.print("Introduce player1_ace (numeric): ");
+        String w_ace = scan.next();
+        System.out.print("Introduce player1_SvGms (numeric): ");
+        String w_SvGms = scan.next();
+        System.out.print("Introduce player2_ace (numeric): ");
+        String l_ace = scan.next();
+        System.out.print("Introduce player2_SvGms (numeric): ");
+        String l_SvGms = scan.next();
+        System.out.print("Introduce player1_rank (numeric): ");
+        String winner_rank = scan.next();
+        System.out.print("Introduce player2_rank (numeric): ");
+        String loser_rank = scan.next();
         scan.close();
+        System.out.println("");
 
-        String data = sepallenght + "," + sepalwidth + "," + petallength + "," + petalwidth + ",?";
+        String data = surface + ",?," + winner_hand + "," + winner_ioc + "," + winner_age + "," + loser_hand + "," + loser_ioc + "," + loser_age + "," + w_ace + "," + w_SvGms + "," + l_ace + "," + l_SvGms + "," + winner_rank + "," + loser_rank;
 
-        Path test = Paths.get("test_data/test.arff");
+        Path test = Paths.get("test_data/test_tennis.arff");
         List<String> fileContent = new ArrayList<>(Files.readAllLines(test, StandardCharsets.UTF_8));
 
-        fileContent.set(9, data);
+        fileContent.set(18, data);
 
         Files.write(test, fileContent, StandardCharsets.UTF_8);
 

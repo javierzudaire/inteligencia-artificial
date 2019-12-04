@@ -19,7 +19,7 @@ public class Principal {
         Modelo modelo = new Modelo();
         modelo.introducirDatos();
         modelo.aprenderModelo();
-        System.out.println("El clasificador con J48 obtiene: " + modelo.aplicarModelo());
+        System.out.println("El clasificador con Random Forest obtiene que el ganador es " + modelo.aplicarModelo());
     }
 
 }

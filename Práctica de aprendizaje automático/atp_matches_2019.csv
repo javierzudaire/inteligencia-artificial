@@ -1,0 +1,9 @@
+surface,winner,player1_hand,player1_ioc,player1_age,player2_hand,player2_ioc,player2_age,player1_ace,player1_SvGms,player2_ace,player2_SvGms,player1_rank,player2_rank
+Hard,Player1,R,JPN,29.04312115,R,POL,23.00342231,6,19,11,19,9,176
+Hard,Player1,R,GER,21.7357974,R,SLO,29.49212868,11,14,7,13,4,67
+Hard,Player1,R,FRA,34.04791239,R,USA,25.48939083,10,15,4,15,30,133
+Hard,Player1,R,KOR,22.65571526,L,USA,28.40246407,10,26,22,25,25,78
+Hard,Player2,R,USA,31.27173169,R,FRA,27.8275154,23,20,21,20,49,55
+Hard,Player2,R,LAT,30.37371663,R,SUI,33.79876797,4,6,3,7,86,59
+Hard,Player2,R,AUS,23.71800137,R,CAN,28.04928131,15,16,30,16,52,17
+Hard,Player2,R,BEL,34.83915127,R,CRO,22.16563997,11,13,16,14,321,12
